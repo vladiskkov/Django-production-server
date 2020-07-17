@@ -1,12 +1,12 @@
 # Django-production-server
 Django project with production server
 
-#### First need to make an upgrade
+### First need to make an upgrade
 ```
 apt-get update && apt-get upgrade -y
 ```
 
-#### Install required software package
+### Install required software package
 ```
 apt-get install python3-pip -y          # Install pip
 apt-get install python3-venv y          # Install virtual environment
@@ -14,20 +14,20 @@ apt-get install nginx -y                # Install nginx
 apt-get install supervisor -y
 ```
 
-#### Install virtual environment
+### Install virtual environment
 ```
 python3 -m venv /opt/myenv              # Creation virtual environment
 source opt/myenv/bin/activate           # Activation virtual environment
 ```
 
-#### Install required software package in virtual environment
+### Install required software package in virtual environment
 ```
 pip3 install --upgrade pip              # Update pip
 pip install Django                      # Install Django
 pip install gunicorn                    # Install Gunicorn
 ```
 
-#### Creating Django project
+### Creating Django project
 ```
 source opt/myenv/bin/activate           # Activation virtual environment
 cd /opt/myenv
@@ -37,17 +37,16 @@ nano settings.py
     ALLOWED_HOSTS = ['ip_server']
 ```
 
-#### Gunicorn test
+### Gunicorn test
 Start gunicorn from folder where manage.py:
 ```
 cd /opt/myenv/myproject
 gunicorn myproject.wsgi:application --bind ['ip_server']:8000
-
 ```
 Now in your browser type ['ip_server']:8000
 Should appear Django startup page "It worked!"
 
-#### Settings Django static files
+### Settings Django static files
 ```
 cd /opt/myenv/myproject/myproject 
 nano settings.py
@@ -57,7 +56,7 @@ cd /opt/myenv/myproject
 python manage.py collectstatic
 ```
 
-#### Settings nginx
+### Settings nginx
 Config file for nginx:
 ```
 cd /etc/nginx/sites-available/
@@ -81,7 +80,7 @@ nano default
   }
 ```
 
-#### Testing production server
+### Testing production server
 ```
 service nginx restart
 cd /opt/myenv/myproject
@@ -91,7 +90,7 @@ gunicorn myproject.wsgi:application
 In your browser type ['ip_server']:8000
 Should appear Django startup page "It worked!"
 
-#### Settings supervisor
+### Settings supervisor
 So that our application starts after any unexpected reboot or crash
 Creating config file for gunicorn:
 ```
