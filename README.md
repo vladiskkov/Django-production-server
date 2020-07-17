@@ -81,7 +81,8 @@ nano default
 ```
 Rights changes for db file:
 ```
-chown root:root /opt/myenv/myproject/db.sqlite3
+chown www-data:www-data /opt/myenv/myproject/db.sqlite3
+chown www-data:www-data /opt/myenv/myproject
 chmod ugo+rw- /opt/myenv/myproject/db.sqlite3
 chmod o+w /opt/myenv/myproject
 ```
@@ -105,7 +106,7 @@ touch gunicorn.conf.py
 nano gunicorn.conf.py
     bind = '127.0.0.1:8000'
     workers = 3
-    user = "nobody"
+    user = "www-data"
 ```
 Creating config file for supervisor:
 ```
