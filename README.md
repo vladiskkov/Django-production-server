@@ -79,6 +79,12 @@ nano default
     }
   }
 ```
+Rights changes for db file:
+```
+chown root:root /opt/myenv/myproject/db.sqlite3
+chmod ugo+rw- /opt/myenv/myproject/db.sqlite3
+chmod o+w /opt/myenv/myproject
+```
 
 ### Testing production server
 ```
