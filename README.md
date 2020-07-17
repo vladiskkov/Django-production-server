@@ -119,7 +119,7 @@ nano myproject.conf
     autorestart=true
     redirect_stderr=true
 ```
-Start supervisor
+Start supervisor:
 ```
 supervisorctl reread
 supervisorctl update
